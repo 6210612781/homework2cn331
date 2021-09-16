@@ -2,17 +2,17 @@
 
 {% block body %}
 
-    <h1>Welcome, {{ request.user.first_name }}</h1>
+    <h1 style="color:white">Welcome, {{ request.user.first_name }}</h1>
 
     <ul>
-        <li>Username: {{ request.user.username }}</li>
-        <li>Email: {{ request.user.email }}</li>
+        <li style="color:white">Username: {{ request.user.username }}</li>
+        <li style="color:white">Email: {{ request.user.email }}</li>
     </ul>
 
-    <a href="{% url 'users:index' %}">aLL Courses !</a>
+    <div style="margin-left:1%"><a href="{% url 'users:index' %}"class="btn btn-outline-light">All Courses</a></div>
     <br>
     <br>
     <br>
     
-    <a href="{% url 'realuser:logout' %}">Log out</a>
+    <div style="margin-left:1%"><a href="{% url 'realuser:logout' %}"class="btn btn-outline-danger">Logout</a></div>
 {% endblock %}

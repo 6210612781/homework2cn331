@@ -1,32 +1,35 @@
 {% extends "users/layout.html" %}
 
 {% block body %}
-    <h1>
-        COUrSES  {{ couses.id }}
-    </h1>
+    <div style="color:white;margin-left:1%"><h1>
+        Course  {{ couses.id }} Detail
+    </h1></div>
     <u1>
-        <li>subject : {{ couses.subject}}</li>
-        <li>Semmemster : {{couses.term}}</li>
-        <li>Student : {{ keekon }} / {{couses.num_student}}</li>
-        <li>Status : {% if couses.status %}
+        <div style="color:white;margin-left:1%">
+        <li>Course Name     : {{ couses.subject}}</li>
+        <li>Sememster  : {{couses.term}}</li>
+        <li>Year       : {{couses.year}}</li>
+        <li>Student    : {{ keekon }} / {{couses.num_student}}</li>
+        <li>Status     : {% if couses.status %}
                     Avalible
                     {%else%}
                     Unvalible
                     {% endif %}
-        </li>
+        </li></div>
         
         
    
     </u1>
     {% if request.user.is_superuser %}
-    <h3> Student: </h3>
+    <br>
+    <div style="color:white;margin-left:1%"><h3> Student </h3></div>
     <ul>
         {% for student in portai %}
-        <li>
+        <li style="color:white">
             {{ student.first_name }} {{ student.last_name }}
         </li>
         {% empty %}
-        <li>
+        <li style="color:white">
             No student
         </li>
         {% endfor %}
@@ -38,24 +41,26 @@
     
     {% if request.user not in portai %}
         {% if couses.status %}
-        <p><a href="{% url 'users:book' couses.id %}">Register</a></h3>
+        <div style="margin-left:1%"><p><a href="{% url 'users:book' couses.id %}"class="btn btn-outline-success">Register</a></h3></div>
         {% else %}
         
         {% endif %}
     {% else %}
-    <h1>
-        aLRadY rEgisTer </h1>
     <br>
-    <p><a href="{% url 'users:debook' couses.id %}">with Draw</a>
+    <div style="color:white;margin-left:1%"><h0>
+        Alrady Register </h0></div>
+    <br>
+    <br>
+    <div style="margin-left:1%">
+    <p ><a href="{% url 'users:debook' couses.id %}"class="btn btn-outline-danger">Withdraw</a></div>
     
     {% endif %}
     
     <br>
-    <br>
-    <br>
-    <li><a href = "{% url 'users:index' %}">Back to menu</a></li>
+    <div style="margin-left:1%"><a href = "{% url 'users:index' %}"class="btn btn-outline-light">Back to menu</a></div>
     {% if request.user.is_superuser %}
-    <li><a href="{% url 'users:admun' couses.id %}">Admin CoMand</a></li>
+    <br>
+    <div style="margin-left:1%"><a href="{% url 'users:admun' couses.id %}"class="btn btn-outline-light">Switch Status</a></div>
     {% else %}
    
     {% endif %}
