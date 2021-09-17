@@ -6,9 +6,11 @@ from django.urls import reverse
 
 # Create your views here.
 def index(request):
+    
     return render(request, "users/index.html",
     {
-        "couses" : Couses.objects.all()
+        "couses" : Couses.objects.all(),
+        
     })
 def do_couses(request , couses_id):
     
@@ -53,6 +55,7 @@ def admun(request, couses_id):
             count.status = True
             count.save()
     return HttpResponseRedirect(reverse("users:couses", args=(couses_id,)))
+
 
 
 

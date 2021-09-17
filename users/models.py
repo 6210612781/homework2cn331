@@ -9,7 +9,7 @@ class Couses(models.Model):
     couseid = models.IntegerField()
     num_student = models.IntegerField()
     year = models.IntegerField()
-    nisit = models.ManyToManyField(User, blank=True)
+    nisit = models.ManyToManyField(User, blank=True,name="nisit")
     status = models.BooleanField(default=True)
 
     def is_full(self):

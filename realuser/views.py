@@ -3,13 +3,22 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+import sys
+sys.path.append('../')
+from users.models import *
 # Create your views here.
 
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("realuser:login"))
     else:
-        return render(request, "realuser/index.html")
+        couseslist = []
+        for c in Couses.objects.all():
+            if request.user in c.nisit.all():
+                couseslist.append(c)
+        return render(request, "realuser/index.html",{
+            "couseslist" : couseslist
+        })
 
 def login_view(request):
     if request.user.is_authenticated:
