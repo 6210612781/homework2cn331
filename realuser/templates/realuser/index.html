@@ -1,7 +1,14 @@
-{% extends "users/layout.html" %}
+{% extends "realuser/layout.html" %}
 
 {% block body %}
-
+    <style>
+        body {
+        background-image: url("https://source.unsplash.com/GcDgpyhmR_c");
+        background-size: cover;
+        font-family: 'Rokkitt', serif;
+        font-size: 24px;
+      }
+    </style>
     <h1 style="color:white">Welcome, {{ request.user.first_name }}</h1>
 
     <ul>
@@ -11,8 +18,7 @@
 
     <div style="margin-left:1%"><a href="{% url 'users:index' %}"class="btn btn-outline-light">All Courses</a></div>
     <br>
-    <br>
-    <br>
+    
     
     <div style="margin-left:1%"><a href="{% url 'realuser:logout' %}"class="btn btn-outline-danger">Logout</a></div>
 {% endblock %}
